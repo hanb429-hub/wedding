@@ -1,0 +1,150 @@
+const eventDetails = [
+  { label: '일시', value: '2027년 1월 23일 토요일' },
+  { label: '시간', value: '오후 12:30' },
+  { label: '장소', value: '아시아드주경기장 1층' },
+  { label: '주소', value: '도로명: 부산 연제구 월드컵대로 344 / 지번: 부산 연제구 거제동 1299' },
+]
+
+const schedule = [
+  { time: '12:00', title: '내빈 오시기 전', desc: '여유롭게 자리를 마련하고 있습니다.' },
+  { time: '12:30', title: '결혼식 시작', desc: '서약식과 혼인 예식이 진행됩니다.' },
+  { time: '13:30', title: '오찬 및 축하', desc: '소중한 분들과 함께 나누는 시간입니다.' },
+]
+
+const family = [
+  {
+    side: '신랑 측',
+    members: [
+      { role: '아버지', name: '권형삼' },
+      { role: '어머니', name: '이남주' },
+      { role: '신랑', name: '권민재' },
+    ],
+  },
+  {
+    side: '신부 측',
+    members: [
+      { role: '아버지', name: '강태석' },
+      { role: '어머니', name: '채수련' },
+      { role: '신부', name: '강한별' },
+    ],
+  },
+]
+
+const accountInfo = [
+  {
+    label: '신랑 측',
+    owner: '권형삼 / 권민재',
+    bank: '국민은행',
+    number: '000000-00-000000',
+  },
+  {
+    label: '신부 측',
+    owner: '강태석 / 강한별',
+    bank: '신한은행',
+    number: '000-000-000000',
+  },
+]
+
+export default function App() {
+  return (
+    <div className="page-shell">
+      <header className="hero">
+        <div className="hero-content">
+          <p className="eyebrow">Wedding Invitation</p>
+          <h1>
+            권민재 <span>&</span> 강한별
+          </h1>
+          <p className="subtext">2027. 01. 23 토요일 오후 12:30</p>
+          <a className="primary-btn" href="#details">
+            청첩장 보러가기
+          </a>
+        </div>
+      </header>
+
+      <main>
+        <section className="intro section-card">
+          <p className="section-kicker">Invitation</p>
+          <h2>서로를 알아가며 사랑을 키운 두 사람이</h2>
+          <p>
+            이제 한 가정을 이루고자 합니다.
+            <br />
+            소중한 분들을 모시고 진심으로 축하해 주시면 감사하겠습니다.
+          </p>
+        </section>
+
+        <section id="details" className="details section-card">
+          <p className="section-kicker">Wedding</p>
+          <div className="detail-grid">
+            {eventDetails.map((item) => (
+              <div key={item.label} className="detail-item">
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="family section-card">
+          <p className="section-kicker">Family</p>
+          <div className="family-grid">
+            {family.map((group) => (
+              <div key={group.side} className="family-block">
+                <h3>{group.side}</h3>
+                <ul>
+                  {group.members.map((member) => (
+                    <li key={`${group.side}-${member.role}`}>
+                      <span>{member.role}</span>
+                      <strong>{member.name}</strong>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="schedule section-card">
+          <p className="section-kicker">Schedule</p>
+          <div className="schedule-list">
+            {schedule.map((item) => (
+              <div key={item.time} className="schedule-item">
+                <div className="time">{item.time}</div>
+                <div className="info">
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="account section-card">
+          <p className="section-kicker">Account</p>
+          <div className="account-grid">
+            {accountInfo.map((account) => (
+              <div key={account.label} className="account-box">
+                <h3>{account.label}</h3>
+                <p>{account.owner}</p>
+                <div className="bank-row">
+                  <span>{account.bank}</span>
+                  <strong>{account.number}</strong>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="message section-card">
+          <p className="section-kicker">Greeting</p>
+          <h2>함께해 주시는 모든 분들께 감사드립니다.</h2>
+          <p>
+            바쁘신 와중에도 자리를 빛내 주시는 마음에 깊이 감사드리며,
+            <br />
+            앞날에도 행복이 가득한 시간으로 함께 하겠습니다.
+          </p>
+        </section>
+      </main>
+    </div>
+  )
+}
+
